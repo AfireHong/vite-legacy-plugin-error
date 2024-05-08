@@ -1,0 +1,43 @@
+System.register(['./manual-chunk-legacy-!~{002}~.js'],(function(){'use strict';var createApp,App;return{setters:[module=>{createApp=module.c;App=module.A;}],execute:(function(){var __vite_style__ = document.createElement('style');__vite_style__.textContent = ":root {\n  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;\n  line-height: 1.5;\n  font-weight: 400;\n\n  color-scheme: light dark;\n  color: rgba(255, 255, 255, 0.87);\n  background-color: #242424;\n\n  font-synthesis: none;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\na {\n  font-weight: 500;\n  color: #646cff;\n  text-decoration: inherit;\n}\na:hover {\n  color: #535bf2;\n}\n\nbody {\n  margin: 0;\n  display: flex;\n  place-items: center;\n  min-width: 320px;\n  min-height: 100vh;\n}\n\nh1 {\n  font-size: 3.2em;\n  line-height: 1.1;\n}\n\nbutton {\n  border-radius: 8px;\n  border: 1px solid transparent;\n  padding: 0.6em 1.2em;\n  font-size: 1em;\n  font-weight: 500;\n  font-family: inherit;\n  background-color: #1a1a1a;\n  cursor: pointer;\n  transition: border-color 0.25s;\n}\nbutton:hover {\n  border-color: #646cff;\n}\nbutton:focus,\nbutton:focus-visible {\n  outline: 4px auto -webkit-focus-ring-color;\n}\n\n.card {\n  padding: 2em;\n}\n\n#app {\n  max-width: 1280px;\n  margin: 0 auto;\n  padding: 2rem;\n  text-align: center;\n}\n\n@media (prefers-color-scheme: light) {\n  :root {\n    color: #213547;\n    background-color: #ffffff;\n  }\n  a:hover {\n    color: #747bff;\n  }\n  button {\n    background-color: #f9f9f9;\n  }\n}\n";document.head.appendChild(__vite_style__);__VITE_IS_MODERN__&&(function polyfill() {
+    const relList = document.createElement('link').relList;
+    if (relList && relList.supports && relList.supports('modulepreload')) {
+        return;
+    }
+    for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
+        processPreload(link);
+    }
+    new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+            if (mutation.type !== 'childList') {
+                continue;
+            }
+            for (const node of mutation.addedNodes) {
+                if (node.tagName === 'LINK' && node.rel === 'modulepreload')
+                    processPreload(node);
+            }
+        }
+    }).observe(document, { childList: true, subtree: true });
+    function getFetchOpts(link) {
+        const fetchOpts = {};
+        if (link.integrity)
+            fetchOpts.integrity = link.integrity;
+        if (link.referrerPolicy)
+            fetchOpts.referrerPolicy = link.referrerPolicy;
+        if (link.crossOrigin === 'use-credentials')
+            fetchOpts.credentials = 'include';
+        else if (link.crossOrigin === 'anonymous')
+            fetchOpts.credentials = 'omit';
+        else
+            fetchOpts.credentials = 'same-origin';
+        return fetchOpts;
+    }
+    function processPreload(link) {
+        if (link.ep)
+            // ep marker = processed
+            return;
+        link.ep = true;
+        // prepopulate the load record
+        const fetchOpts = getFetchOpts(link);
+        fetch(link.href, fetchOpts);
+    }
+}());createApp(App).mount("#app");})}}));
